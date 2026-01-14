@@ -10,6 +10,8 @@ interface IMyButtonProps{
 
 export const MyButton = (props: IMyButtonProps) => {
 
+    console.log("Teste");
+
 return (
 
 <TouchableOpacity onPress={props.onPress}>
