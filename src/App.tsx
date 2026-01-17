@@ -1,7 +1,8 @@
 import {  SafeAreaView } from 'react-native-safe-area-context'
-import { Text, TouchableOpacity } from 'react-native'
+import { FlatList, Text, TouchableOpacity } from 'react-native'
 import { useState } from "react";
 import { ScrollView } from 'react-native'
+
 
 export default function App() {
 
@@ -10,24 +11,23 @@ export default function App() {
     ,800,900,105,1000,1001,1002,1003,1004, 1007, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 100000
   ]);
 
-  const [mostrar, setMostrar] = useState(false);
-
-  console.log(mostrar);
-
   return(
   <SafeAreaView>
-
-    <TouchableOpacity onPress = {() => setMostrar(!mostrar)}>
-      <Text> Clique aqui </Text>
-    </TouchableOpacity>
-    
-    {mostrar && (
+  
+    {/*
     <ScrollView>
       {
         list.map((item, index) => (<Text key={index}>valor: {item} posição: {index}</Text>))
       }
-    </ScrollView>    
-    )}
+    </ScrollView>  */}  
+
+    <FlatList
+      data={list}
+      keyExtractor={(item, index) => item.toString()}
+      renderItem={({item, index}) => ( 
+      <Text> valor: {item} posição: {index}</Text> )}
+    />
+    
   
   </SafeAreaView>
 
