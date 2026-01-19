@@ -1,14 +1,15 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { Button, Text } from "react-native";
+import { TrouteProps } from "../shared/Routes";
 
 export const Detail = () =>{
 const navigation = useNavigation();  
 
 // recebendo parametros
-const { params } = useRoute<any>()
+const { params } = useRoute<TrouteProps<'detail'>>();
 
     return <>
-         <Text>Details {params.id}</Text>
+         <Text>Details {params.rate}</Text>
          
     </>
 }

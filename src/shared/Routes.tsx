@@ -1,10 +1,18 @@
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createNativeStackNavigator, NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Detail } from "../screens/Detail";
 import { SetUsername } from "../screens/SetUsername";
-import { NavigationContainer } from "@react-navigation/native";
+import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { HomePage } from "../screens/HomePage";
 
-const Stack = createNativeStackNavigator();
+type TScreenDefiniton = {
+   home: undefined;
+   setusername: undefined;
+   detail: {rate: number};
+}
+
+
+const Stack = createNativeStackNavigator<TScreenDefiniton>();
+
 
 export const AppRoutes = () => {
 
@@ -18,3 +26,6 @@ export const AppRoutes = () => {
  </NavigationContainer>
     )
 }
+
+export type NavigationScreenProps = NativeStackNavigationProp<TScreenDefiniton>;
+export type TrouteProps<T extends keyof TScreenDefiniton > = RouteProp<TScreenDefiniton, T>;
