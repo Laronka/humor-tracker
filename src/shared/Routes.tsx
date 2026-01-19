@@ -13,7 +13,7 @@ export const AppRoutes = () => {
     <Stack.Navigator>
       <Stack.Screen name="home" component={HomePage} />
       <Stack.Screen name="detail" component={Detail} />
-      <Stack.Screen name="SetUsername" component={SetUsername} />
+      <Stack.Screen name="setusername" component={SetUsername} />
     </Stack.Navigator>
  </NavigationContainer>
     )
