@@ -15,7 +15,7 @@ const navigation = useNavigation<NavigationScreenProps>();
         <>
             <Text>HomePage</Text>
             {/* Navegando entre tela com botões e passando parametros. */}
-            <Button title="Go to Detail" onPress={() => navigation.navigate('detail', { rate: 8})}/>
+            <Button title="Go to Detail" onPress={() => navigation.navigate('detail', {numero: 5})}/>
             
         </>
     )

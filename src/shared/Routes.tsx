@@ -7,7 +7,7 @@ import { HomePage } from "../screens/HomePage";
 type TScreenDefiniton = {
    home: undefined;
    setusername: undefined;
-   detail: {rate: number};
+   detail: {numero: number};
 }
 
 
