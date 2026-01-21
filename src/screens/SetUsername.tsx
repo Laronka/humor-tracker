@@ -4,7 +4,6 @@ import { Button, Text  } from 'react-native'
 export const SetUsername = () =>{
 const navigation = useNavigation();
     return <>
-        <Text>SetUsername</Text>
-        
+        <Text>SetUsername</Text>    
     </>;
 }
