@@ -5,15 +5,16 @@ import { NavigationContainer, RouteProp } from "@react-navigation/native";
 import { HomePage } from "../screens/HomePage";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Children } from "react";
+import { theme } from "./themes/Theme";
 
-type TScreenDefiniton = {
+type TScreenDefinition = {
    home: undefined;
-   setusername: undefined;
+   setusername: {nome: string, idade: number};
    detail: {numero: number};
 }
 
 
-const Stack = createNativeStackNavigator<TScreenDefiniton>();
+const Stack = createNativeStackNavigator<TScreenDefinition>();
 
 
 export const AppRoutes = () => {
@@ -21,8 +22,11 @@ export const AppRoutes = () => {
     return (
  <NavigationContainer>
     <Stack.Navigator initialRouteName='home' 
-    screenOptions={{headerShown: false}}
+    
     screenLayout={({children}) => <SafeAreaView>{children}</SafeAreaView>}
+    screenOptions={{headerShown: false, contentStyle: {backgroundColor: theme.colors.background},
+
+    }}
     >
    <Stack.Group 
    screenOptions={{
@@ -50,5 +54,5 @@ export const AppRoutes = () => {
     )
 }
 
-export type NavigationScreenProps = NativeStackNavigationProp<TScreenDefiniton>;
-export type TrouteProps<T extends keyof TScreenDefiniton > = RouteProp<TScreenDefiniton, T>;
+export type NavigationScreenProps = NativeStackNavigationProp<TScreenDefinition>;
+export type TrouteProps<T extends keyof TScreenDefinition > = RouteProp<TScreenDefinition, T>;

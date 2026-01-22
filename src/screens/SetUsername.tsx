@@ -1,9 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useRoute } from '@react-navigation/native';
 import { Button, Text  } from 'react-native'
+import { TrouteProps } from '../shared/Routes';
 
 export const SetUsername = () =>{
-const navigation = useNavigation();
+
+const {params} = useRoute<TrouteProps<'setusername'>>();
+
     return <>
-        <Text>SetUsername</Text>    
+        <Text>SetUsername, Nome: {params.nome} Idade: {params.idade}</Text>    
     </>;
 }
