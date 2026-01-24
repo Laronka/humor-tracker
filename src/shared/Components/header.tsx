@@ -1,16 +1,17 @@
 import { StyleSheet, Text, View } from "react-native"
 import { theme } from "../themes/Theme"
+import React from "react"
 
 interface IHeaderProps {
-    name: string | undefined
+    children: React.ReactNode;
 }
 
-export const Header = ({name}: IHeaderProps) => {
+export const Header = ({children}: IHeaderProps) => {
 
     return(
         <View style={styles.headerContainer}>
             <Text style={styles.headerText}>Olá</Text>
-            <Text style={styles.headerBoldText}>{ !name ? 'seu nome é:':`${name}!`}</Text>
+            <Text style={styles.headerBoldText}>{children}</Text>
         </View>
     )
 
