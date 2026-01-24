@@ -9,7 +9,7 @@ import { theme } from "./themes/Theme";
 
 type TScreenDefinition = {
    home: undefined;
-   setusername: {nome: string, idade: number};
+   setusername: undefined;
    detail: {numero: number};
 }
 
@@ -45,7 +45,7 @@ export const AppRoutes = () => {
       <Stack.Screen 
          name="detail" 
          component={Detail} 
-         options={{sheetAllowedDetents: [0.7, 0.95]
+         options={{sheetAllowedDetents: [0.5, 0.7]
          }}/>
 
       <Stack.Screen 

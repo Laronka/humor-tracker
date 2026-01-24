@@ -7,6 +7,6 @@ export const SetUsername = () =>{
 const {params} = useRoute<TrouteProps<'setusername'>>();
 
     return <>
-        <Text>SetUsername, Nome: {params.nome} Idade: {params.idade}</Text>    
+        <Text>SetUsername</Text>    
     </>;
 }
