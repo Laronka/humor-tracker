@@ -37,6 +37,7 @@ interface IBaseInputProps{
     BaseInputContainer:{
         gap: 5,
         flexDirection: 'column',
+        
     },
     label: { 
         fontSize: theme.fonts.sizes.body,
@@ -46,10 +47,13 @@ interface IBaseInputProps{
     BaseInput:{
         borderRadius: 8,
         color: theme.colors.background,
+        backgroundColor: theme.colors.textPlaceholder,
+        
     },
     BaseInputPressed: {
         borderRadius: 8,
         color: theme.colors.background,
+        backgroundColor: theme.colors.textPlaceholder, /*Esse configuração estava aplicado diretamente na tela, agora apliquei no botão inteiro*/
         opacity: 0.3,
     },
  }

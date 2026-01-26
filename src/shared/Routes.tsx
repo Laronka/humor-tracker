@@ -38,7 +38,7 @@ export const AppRoutes = () => {
       presentation: 'formSheet', 
       sheetCornerRadius:24,
    }}
-   
+
    >
       <Stack.Screen 
          name="home" 

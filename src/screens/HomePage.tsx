@@ -34,15 +34,14 @@ const [nome, setNome] = useState('João Pedro');
             </Text>
             
             <BaseInput label="Nome" asButton onPress={()=> navigation.navigate('setusername')}>
-            <View style={style.footerPlaceholder}>
                 <TextInput   
-                    editable={false}
+                    editable={false} /*Desabilita a função do teclado e fica apenas como botão*/
                     pointerEvents='none' /*habilita o click no Iphone, para o Android não precisa*/
                     style={style.footerInput}
                     placeholder="Escreva seu nome aqui:"
                     
                 />
-            </View>
+            
             </BaseInput>
             
         </View>
@@ -66,8 +65,7 @@ const style = StyleSheet.create({
         fontSize: theme.fonts.sizes.body,
         fontFamily: theme.fonts.family.regular,
         color: theme.colors.textPlaceholder,
-        padding: 12,
-        
+        padding: 12, 
     },
      footerPlaceholder:{
         backgroundColor: theme.colors.textPlaceholder,

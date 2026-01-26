@@ -13,13 +13,12 @@ return (
                     Qual o seu nome:
             </Text>
         <BaseInput label='Nome'>
-            <View style={style.placeholder}>  {/*Aplicado uma estilização específica no input desta tela, diferente na vista no vídeo*/}
             <TextInput 
                     pointerEvents='none' /*habilita o click no Iphone, para o Android não precisa*/
                     style={style.input}
                     placeholder="Escreva seu nome aqui:"
             />       
-            </View>     
+              
         </BaseInput> 
     </View>
     );
