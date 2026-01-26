@@ -36,8 +36,10 @@ export const AppRoutes = () => {
    <Stack.Group 
    screenOptions={{
       presentation: 'formSheet', 
-      sheetCornerRadius:24
-   }}>
+      sheetCornerRadius:24,
+   }}
+   
+   >
       <Stack.Screen 
          name="home" 
          component={HomePage}/>

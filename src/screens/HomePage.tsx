@@ -5,6 +5,7 @@ import { Header } from "../shared/Components/header";
 import { Footer } from "../shared/Components/footer";
 import { useState } from "react";
 import { BaseInput } from "../shared/Components/BaseInput";
+import { theme } from "../shared/themes/Theme";
 
 
 
@@ -27,12 +28,24 @@ const [nome, setNome] = useState('João Pedro');
         <View style={{flex: 1}}></View> 
     
         <Footer>
-            <Text style={style.footerTitle}>Footer:</Text>
+         <View style={style.footerContainer}>
+            <Text style={style.footerTitle}>
+                Qual o seu nome:
+            </Text>
+            
             <BaseInput label="Nome" asButton onPress={()=> navigation.navigate('setusername')}>
+            <View style={style.footerPlaceholder}>
                 <TextInput   
                     editable={false}
+                    pointerEvents='none' /*habilita o click no Iphone, para o Android não precisa*/
+                    style={style.footerInput}
+                    placeholder="Escreva seu nome aqui:"
+                    
                 />
+            </View>
             </BaseInput>
+            
+        </View>
         </Footer>
     </>;
     
@@ -40,8 +53,25 @@ const [nome, setNome] = useState('João Pedro');
 
 const style = StyleSheet.create({
 
-    footerTitle:{},
+    footerContainer:{
+        gap: 8
+    },
+    footerTitle:{
+        textAlign: 'center',
+        fontSize: theme.fonts.sizes.body,
+        fontFamily: theme.fonts.family.regular,
+        color: theme.colors.text,
+    },
+    footerInput:{
+        fontSize: theme.fonts.sizes.body,
+        fontFamily: theme.fonts.family.regular,
+        color: theme.colors.textPlaceholder,
+        padding: 12,
+        
+    },
+     footerPlaceholder:{
+        backgroundColor: theme.colors.textPlaceholder,
+        borderRadius: 8
+     },
 
-
-    
 })
