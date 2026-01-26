@@ -6,8 +6,10 @@ import { HomePage } from "../screens/HomePage";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Children } from "react";
 import { theme } from "./themes/Theme";
+import { Login } from "../screens/Login";
 
 type TScreenDefinition = {
+   login: undefined;
    home: undefined;
    setusername: undefined;
    detail: {numero: number};
@@ -21,7 +23,7 @@ export const AppRoutes = () => {
 
     return (
  <NavigationContainer>
-    <Stack.Navigator initialRouteName='home' 
+    <Stack.Navigator initialRouteName='login' 
     
     screenLayout={({children}) => 
     (<SafeAreaView style={{flex: 1}} edges={['top', 'left', 'right']}>
@@ -33,6 +35,12 @@ export const AppRoutes = () => {
 
     }}
     >
+
+    <Stack.Screen 
+         name="login" 
+         component={Login}/>
+
+
    <Stack.Group 
    screenOptions={{
       presentation: 'formSheet', 

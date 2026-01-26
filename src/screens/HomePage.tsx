@@ -21,7 +21,7 @@ const [nome, setNome] = useState('João Pedro');
 
     return <>
         <Header>
-            {nome}
+            {}
         </Header>
             
         
@@ -35,11 +35,11 @@ const [nome, setNome] = useState('João Pedro');
             
             <BaseInput label="Nome" asButton onPress={()=> navigation.navigate('setusername')}>
                 <TextInput   
+                    autoFocus
                     editable={false} /*Desabilita a função do teclado e fica apenas como botão*/
                     pointerEvents='none' /*habilita o click no Iphone, para o Android não precisa*/
                     style={style.footerInput}
-                    placeholder="Escreva seu nome aqui:"
-                    
+                    placeholder="Escreva seu nome aqui:" 
                 />
             
             </BaseInput>

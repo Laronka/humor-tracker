@@ -3,7 +3,7 @@ import { theme } from "../themes/Theme";
 
 
 interface IBaseInputProps{
-    label: string;
+    label?: string;
     children: React.ReactNode;
     asButton?: boolean;
     onPress?:()=> void;

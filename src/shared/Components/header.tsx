@@ -3,7 +3,7 @@ import { theme } from "../themes/Theme"
 import React from "react"
 
 interface IHeaderProps {
-    children: React.ReactNode;
+    children?: React.ReactNode;
 }
 
 export const Header = ({children}: IHeaderProps) => {
@@ -11,7 +11,7 @@ export const Header = ({children}: IHeaderProps) => {
     return(
         <View style={styles.headerContainer}>
             <Text style={styles.headerText}>Olá</Text>
-            <Text style={styles.headerBoldText}>{children}</Text>
+            <Text style={styles.headerBoldText}>{ children ? children: "seu nome aqui" }</Text>
         </View>
     )
 

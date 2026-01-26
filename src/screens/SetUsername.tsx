@@ -14,6 +14,7 @@ return (
             </Text>
         <BaseInput label='Nome'>
             <TextInput 
+                    autoFocus
                     pointerEvents='none' /*habilita o click no Iphone, para o Android não precisa*/
                     style={style.input}
                     placeholder="Escreva seu nome aqui:"
