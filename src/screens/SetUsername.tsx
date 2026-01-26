@@ -44,9 +44,5 @@ const style = StyleSheet.create({
         color: theme.colors.text,
         padding: 12,
     },
-      placeholder:{
-        backgroundColor: theme.colors.textPlaceholder,
-        borderRadius: 8
-     },
 
 })

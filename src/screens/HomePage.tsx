@@ -67,9 +67,5 @@ const style = StyleSheet.create({
         color: theme.colors.textPlaceholder,
         padding: 12, 
     },
-     footerPlaceholder:{
-        backgroundColor: theme.colors.textPlaceholder,
-        borderRadius: 8
-     },
 
 })
