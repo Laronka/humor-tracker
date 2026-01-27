@@ -3,15 +3,19 @@ import { theme } from "../themes/Theme";
 
 
 interface IButtonProps{
-    children: React.ReactNode;
+    children?: React.ReactNode;
+    onPress?:()=> void;
+    title?: string;
 }
 
-export const Button = ({children}:IButtonProps) =>{
+export const Button = ({children, onPress, title}:IButtonProps) =>{
 
 
 return(
-    <Pressable style={({pressed})=> pressed ? styles.ButtonPressed  : styles.Button  }>
-        <Text style={styles.ButtonText}>{children}</Text>
+    <Pressable 
+    onPress={onPress}
+    style={({pressed})=> pressed ? styles.ButtonPressed  : styles.Button  }>
+        <Text style={styles.ButtonText}>{children}{title}</Text>
     </Pressable>
 
 )}

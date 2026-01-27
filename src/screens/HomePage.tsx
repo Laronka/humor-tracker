@@ -1,9 +1,9 @@
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Button, StyleSheet, Text, View, TextInput } from "react-native"
-import { NavigationScreenProps } from "../shared/Routes";
+import { NavigationScreenProps, TrouteProps } from "../shared/Routes";
 import { Header } from "../shared/Components/header";
 import { Footer } from "../shared/Components/footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BaseInput } from "../shared/Components/BaseInput";
 import { theme } from "../shared/themes/Theme";
 
@@ -14,14 +14,15 @@ import { theme } from "../shared/themes/Theme";
 
 
 export const HomePage = () =>{
-    
+
+const { params } = useRoute<TrouteProps<'home'>>();
 const navigation = useNavigation<NavigationScreenProps>();
 
-const [nome, setNome] = useState('João Pedro');
+useEffect(() => {console.log("rodou")}, []) /*Em desenvolvimento*/
 
     return <>
         <Header>
-            {}
+            {params?.newName}
         </Header>
             
         
@@ -30,7 +31,7 @@ const [nome, setNome] = useState('João Pedro');
         <Footer>
          <View style={style.footerContainer}>
             <Text style={style.footerTitle}>
-                Qual o seu nome:
+                Qual o seu nome:{params?.newName || "Sem nome"}
             </Text>
             
             <BaseInput label="Nome" asButton onPress={()=> navigation.navigate('setusername')}>

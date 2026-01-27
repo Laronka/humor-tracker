@@ -10,7 +10,7 @@ import { Login } from "../screens/Login";
 
 type TScreenDefinition = {
    login: undefined;
-   home: undefined;
+   home: {newName: string} | undefined;
    setusername: undefined;
    detail: {numero: number};
 }
@@ -23,7 +23,7 @@ export const AppRoutes = () => {
 
     return (
  <NavigationContainer>
-    <Stack.Navigator initialRouteName='login' 
+    <Stack.Navigator initialRouteName='home' 
     
     screenLayout={({children}) => 
     (<SafeAreaView style={{flex: 1}} edges={['top', 'left', 'right']}>

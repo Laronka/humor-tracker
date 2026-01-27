@@ -3,20 +3,28 @@ import { StyleSheet, Text, TextInput, View  } from 'react-native'
 import { BaseInput } from '../shared/Components/BaseInput';
 import { theme } from '../shared/themes/Theme';
 import { Button } from '../shared/Components/Button';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { useState } from 'react';
+import { NavigationScreenProps, TrouteProps } from '../shared/Routes';
 
 export const SetUsername = () =>{
 
-
+    
+    const navigation = useNavigation<NavigationScreenProps>();
+    const insets = useSafeAreaInsets();
+    const [nome, setNome] = useState('');
 
 return (
-    <View style={style.container}>
+    <View style={{...style.container, paddingBottom: insets.bottom + 16}}>
+
             <Text style={style.title}>
-                    Qual o seu nome:
+                    Qual o seu nome?
             </Text>
         <BaseInput label='Nome'>
             <TextInput 
-                    
                     autoFocus
+                    value={nome}
+                    onChangeText={setNome}
                     pointerEvents='none' /*habilita o click no Iphone, para o Android não precisa*/
                     style={style.input}
                     placeholder="Escreva seu nome aqui:"
@@ -25,9 +33,13 @@ return (
         
         <View style={{flex: 1}}></View> 
 
-        <Button>
-            <Text>Salvar</Text>
-        </Button>
+        <Button 
+            title='Salvar'
+            onPress={() => navigation.popTo('home', {newName: nome})}
+        />
+            
+            
+        
     </View>
     );
 }
@@ -39,7 +51,6 @@ const style = StyleSheet.create({
         gap: 8,
         paddingLeft:16,
         paddingRight:16,
-        marginBottom: 32,
     },
     title:{
         textAlign: 'center',
