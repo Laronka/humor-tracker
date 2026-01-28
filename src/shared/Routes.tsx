@@ -23,7 +23,7 @@ export const AppRoutes = () => {
 
     return (
  <NavigationContainer>
-    <Stack.Navigator initialRouteName='home' 
+    <Stack.Navigator initialRouteName='login' 
     
     screenLayout={({children}) => 
     (<SafeAreaView style={{flex: 1}} edges={['top', 'left', 'right']}>
@@ -39,19 +39,17 @@ export const AppRoutes = () => {
     <Stack.Screen 
          name="login" 
          component={Login}/>
-
+   
+    <Stack.Screen 
+         name="home" 
+         component={HomePage}/>
 
    <Stack.Group 
    screenOptions={{
       presentation: 'formSheet', 
       sheetCornerRadius:24,
-   }}
-
-   >
-      <Stack.Screen 
-         name="home" 
-         component={HomePage}/>
-
+   }}>
+   
       <Stack.Screen 
          name="detail" 
          component={Detail} 

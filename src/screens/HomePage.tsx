@@ -6,6 +6,7 @@ import { Footer } from "../shared/Components/footer";
 import { useEffect, useState } from "react";
 import { BaseInput } from "../shared/Components/BaseInput";
 import { theme } from "../shared/themes/Theme";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 
@@ -18,11 +19,22 @@ export const HomePage = () =>{
 const { params } = useRoute<TrouteProps<'home'>>();
 const navigation = useNavigation<NavigationScreenProps>();
 
-useEffect(() => {console.log("rodou")}, []) /*Em desenvolvimento*/
+const [name, setName] = useState('');
+
+
+
+useEffect(() => {
+    if (params?.newName){
+    setName(params?.newName || '');}
+}, [params?.newName])
+
+useEffect ( () => {
+        AsyncStorage.getItem('user-name').then(value => {setName(value || '')})
+    }, [] );
 
     return <>
         <Header>
-            {params?.newName}
+            {name}
         </Header>
             
         
@@ -31,7 +43,7 @@ useEffect(() => {console.log("rodou")}, []) /*Em desenvolvimento*/
         <Footer>
          <View style={style.footerContainer}>
             <Text style={style.footerTitle}>
-                Qual o seu nome:{params?.newName || "Sem nome"}
+                Qual o seu nome:
             </Text>
             
             <BaseInput label="Nome" asButton onPress={()=> navigation.navigate('setusername')}>

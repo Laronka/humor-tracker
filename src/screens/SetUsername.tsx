@@ -4,15 +4,32 @@ import { BaseInput } from '../shared/Components/BaseInput';
 import { theme } from '../shared/themes/Theme';
 import { Button } from '../shared/Components/Button';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavigationScreenProps, TrouteProps } from '../shared/Routes';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 export const SetUsername = () =>{
 
     
     const navigation = useNavigation<NavigationScreenProps>();
     const insets = useSafeAreaInsets();
-    const [nome, setNome] = useState('');
+    
+    const [name, setName] = useState('');
+
+    useEffect ( () => {
+        AsyncStorage.getItem('user-name').then(value => {setName(value || '')})
+    }, [] );
+
+    const handleSaveUserName = async () => {
+        try {
+            await AsyncStorage.setItem('user-name', name);
+         }     
+        catch (e) {
+    // saving error
+}
+        navigation.popTo('home', {newName: name})
+    }
 
 return (
     <View style={{...style.container, paddingBottom: insets.bottom + 16}}>
@@ -23,8 +40,8 @@ return (
         <BaseInput label='Nome'>
             <TextInput 
                     autoFocus
-                    value={nome}
-                    onChangeText={setNome}
+                    value={name}
+                    onChangeText={setName}
                     pointerEvents='none' /*habilita o click no Iphone, para o Android não precisa*/
                     style={style.input}
                     placeholder="Escreva seu nome aqui:"
@@ -35,7 +52,7 @@ return (
 
         <Button 
             title='Salvar'
-            onPress={() => navigation.popTo('home', {newName: nome})}
+            onPress={handleSaveUserName}
         />
             
             
