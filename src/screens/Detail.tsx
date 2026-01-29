@@ -8,7 +8,7 @@ export const Detail = () =>{
 const { params } = useRoute<TrouteProps<'detail'>>();
 
     return <>
-         <Text>Details {params.numero}</Text>
+         <Text>Details {params.rate}</Text>
          
     </>
 }
