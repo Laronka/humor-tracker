@@ -5,14 +5,22 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import { Button } from "../shared/Components/Button";
 
 
-import { TrouteProps } from "../shared/Routes";
+import { NavigationScreenProps, TrouteProps } from "../shared/Routes";
 import { BaseInput } from "../shared/Components/BaseInput";
 import { theme } from "../shared/themes/Theme";
+import { useState } from "react";
 
 export const Detail = () =>{  
 
 // recebendo parametros
+
+const navigation = useNavigation<NavigationScreenProps>();
 const { params } = useRoute<TrouteProps<'detail'>>();
+
+const [rate, setRate] = useState(params.rate);
+const [date, setDate] = useState('');
+const [description, setDescription] = useState('');
+
 
     return <>
          <View style={style.footerContainer}>
@@ -21,36 +29,38 @@ const { params } = useRoute<TrouteProps<'detail'>>();
             </Text>
 
             <View style={style.footerIcons}>
-                    <TouchableOpacity onPress={() => {}}>
+                    <TouchableOpacity onPress={() => setRate(1)}>
                         <FontAwesome 
-                        name={params.rate >= 1 ? "star" : "star-o"} 
+                        name={rate >= 1 ? "star" : "star-o"} 
                         size={32} 
-                        color={params.rate >= 1 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}}>
+                        color={rate >= 1 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
+                    <TouchableOpacity onPress={() => setRate(2)}>
                         <FontAwesome 
-                        name={params.rate >= 2 ? "star" : "star-o"} 
+                        name={rate >= 2 ? "star" : "star-o"} 
                         size={32} 
-                        color={params.rate >= 2 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}}>
+                        color={rate >= 2 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
+                    <TouchableOpacity onPress={() => setRate(3)}>
                         <FontAwesome 
-                        name={params.rate >= 3 ? "star" : "star-o"} 
+                        name={rate >= 3 ? "star" : "star-o"} 
                         size={32} 
-                        color={params.rate >= 3 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}}>
+                        color={rate >= 3 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
+                    <TouchableOpacity onPress={() => setRate(4)}>
                         <FontAwesome 
-                        name={params.rate >= 4 ? "star" : "star-o"} 
+                        name={rate >= 4 ? "star" : "star-o"} 
                         size={32} 
-                        color={params.rate >= 4 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
-                    <TouchableOpacity onPress={() => {}}>
+                        color={rate >= 4 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
+                    <TouchableOpacity onPress={() => setRate(4)}>
                         <FontAwesome 
-                        name={params.rate >= 5 ? "star" : "star-o"} 
+                        name={rate >= 5 ? "star" : "star-o"} 
                         size={32} 
-                        color={params.rate >= 5 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
+                        color={rate >= 5 ? theme.colors.Highlight : theme.colors.textPlaceholder} /></TouchableOpacity>
                 </View>
             
          
             <BaseInput label="Data e hora">
                 <TextInput   
+                    value={date}
+                    onChangeText={setDate}
                     style={style.footerInput}
                     placeholder="Escreva seu nome aqui:" 
                 />
@@ -58,6 +68,8 @@ const { params } = useRoute<TrouteProps<'detail'>>();
 
             <BaseInput label="Descreva seu humor aqui">
                 <TextInput   
+                    value={description}
+                    onChangeText={setDescription}
                     style={{...style.footerInput, ...style.footerInputArea}}
                     placeholder="Escreva seu nome aqui:" 
                     multiline
@@ -67,14 +79,17 @@ const { params } = useRoute<TrouteProps<'detail'>>();
 
             <View style={style.actionsContainer}>
 
+            {params.id && (
            <Button variant='outlined' color={theme.colors.error}>
             <AntDesign name={"delete"} size={20} color={theme.colors.error} />
            </Button>
-
+            )}
            <Button 
            title="Cancelar"
            grow
            variant='outlined'
+           onPress={() => navigation.goBack()}
+            
            />
            <Button 
            title="Salvar"

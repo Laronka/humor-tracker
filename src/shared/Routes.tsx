@@ -12,7 +12,7 @@ type TScreenDefinition = {
    login: undefined;
    home: {newName: string} | undefined;
    setusername: undefined;
-   detail: {rate: number};
+   detail: {rate: number, id?:string};
 }
 
 

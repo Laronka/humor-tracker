@@ -24,7 +24,7 @@ return(
         ...(variant === 'contained' ? styles.ButtonContained : {}),
         ...(variant === 'outlined' 
             ? 
-            {
+            {   
                 ...styles.ButtonOutlined,
                 ...(color && {borderColor: color})
             }
