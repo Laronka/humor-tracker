@@ -1,12 +1,13 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Button, StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import AntDesign from '@expo/vector-icons/AntDesign';
+import { Button } from "../shared/Components/Button";
 
 
 import { TrouteProps } from "../shared/Routes";
 import { BaseInput } from "../shared/Components/BaseInput";
 import { theme } from "../shared/themes/Theme";
-import { Footer } from "../shared/Components/footer";
 
 export const Detail = () =>{  
 
@@ -63,6 +64,24 @@ const { params } = useRoute<TrouteProps<'detail'>>();
                     numberOfLines={16}
                 />
             </BaseInput>
+
+            <View style={style.actionsContainer}>
+
+           <Button variant='outlined' color={theme.colors.error}>
+            <AntDesign name={"delete"} size={20} color={theme.colors.error} />
+           </Button>
+
+           <Button 
+           title="Cancelar"
+           grow
+           variant='outlined'
+           />
+           <Button 
+           title="Salvar"
+           grow
+           />
+
+           </View>
             
         </View>
     </>;
@@ -98,5 +117,10 @@ const style = StyleSheet.create({
         gap: 12,
         justifyContent: 'center',
         alignItems: 'center'
+    },
+    actionsContainer:{
+        flexDirection: 'row',
+        alignItems: 'center',
+        gap: 8,
     }
 });
