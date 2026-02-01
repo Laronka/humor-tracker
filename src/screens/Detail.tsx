@@ -2,9 +2,10 @@ import { useNavigation, useRoute } from "@react-navigation/native";
 import { StyleSheet, Text, TextInput, TouchableOpacity, View } from "react-native";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import AntDesign from '@expo/vector-icons/AntDesign';
+import DateTimePickerModal from "react-native-modal-datetime-picker";
+
+
 import { Button } from "../shared/Components/Button";
-
-
 import { NavigationScreenProps, TrouteProps } from "../shared/Routes";
 import { BaseInput } from "../shared/Components/BaseInput";
 import { theme } from "../shared/themes/Theme";
@@ -18,8 +19,9 @@ const navigation = useNavigation<NavigationScreenProps>();
 const { params } = useRoute<TrouteProps<'detail'>>();
 
 const [rate, setRate] = useState(params.rate);
-const [date, setDate] = useState('');
+const [date, setDate] = useState(new Date());
 const [description, setDescription] = useState('');
+const [showDateTimePicker, setShowDateTimePicker] = useState(false);
 
 
     return <>
@@ -57,14 +59,23 @@ const [description, setDescription] = useState('');
                 </View>
             
          
-            <BaseInput label="Data e hora">
+            <BaseInput label="Data e hora" asButton onPress={()=> setShowDateTimePicker(true)}>
                 <TextInput   
-                    value={date}
-                    onChangeText={setDate}
+                    value={date.toLocaleString('pt-Br')}
+                    editable={false}
+                    pointerEvents='none'
                     style={style.footerInput}
-                    placeholder="Escreva seu nome aqui:" 
+                    placeholder='Selecione data e hora'
+                    
                 />
             </BaseInput>
+            <DateTimePickerModal
+                date={date}
+                isVisible={showDateTimePicker}
+                mode="datetime"
+                onConfirm={(date) => {setShowDateTimePicker(false); setDate(date)}}
+                onCancel={()=> setShowDateTimePicker(false)}
+      />
 
             <BaseInput label="Descreva seu humor aqui">
                 <TextInput   
@@ -89,7 +100,6 @@ const [description, setDescription] = useState('');
            grow
            variant='outlined'
            onPress={() => navigation.goBack()}
-            
            />
            <Button 
            title="Salvar"
@@ -97,7 +107,6 @@ const [description, setDescription] = useState('');
            />
 
            </View>
-            
         </View>
     </>;
     
@@ -118,7 +127,7 @@ const style = StyleSheet.create({
     footerInput:{
         fontSize: theme.fonts.sizes.body,
         fontFamily: theme.fonts.family.regular,
-        color: theme.colors.textPlaceholder,
+        color: theme.colors.text,
         padding: 12, 
     },
     footerInputArea:{
