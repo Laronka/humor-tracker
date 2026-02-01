@@ -20,10 +20,8 @@ export const Footer = ({children}: IFooterProps) => {
 const styles = StyleSheet.create({
     footerContainer: {
         borderRadius: 24,
-        padding: 16,
+        padding:16,
         backgroundColor: theme.colors.Paper,
         ...theme.shadows.default,
-        
-        
     }
 })

@@ -23,7 +23,7 @@ export const AppRoutes = () => {
 
     return (
  <NavigationContainer>
-    <Stack.Navigator initialRouteName='login' 
+    <Stack.Navigator initialRouteName='home' 
     
     screenLayout={({children}) => 
     (<SafeAreaView style={{flex: 1}} edges={['top', 'left', 'right']}>
@@ -53,7 +53,7 @@ export const AppRoutes = () => {
       <Stack.Screen 
          name="detail" 
          component={Detail} 
-         options={{sheetAllowedDetents: [0.5, 0.7]
+         options={{sheetAllowedDetents: [0.7]
          }}/>
 
       <Stack.Screen 
