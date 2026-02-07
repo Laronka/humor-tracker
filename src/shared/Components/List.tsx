@@ -29,13 +29,13 @@ export const ListItem = ({rate, datetime, description}: IListProps) => {
                         color={theme.colors.Highlight} 
                         style={{
                             ...styles.starFill,
-                            ...(index === 0 ? styles.starFillStart :{}), 
+                            ...(index === 0 ? styles.starFillStart :{}),  
                             ...((index + 1) === all.length ? styles.starFillEnd :{})
                             }}
                          />
                          
                  ))}
-                 {Array.from(new Array(5 -rate)).map((_, index, all) => (
+                 {Array.from(new Array(5 -rate)).map((_, index, all) => ( //estudar estes conteúdo aqui.
                     <FontAwesome 
                         key={index}
                         name={"star-o"} 

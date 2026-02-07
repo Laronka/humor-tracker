@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from "@react-navigation/native";
-import { Button, StyleSheet, Text, View, TextInput, TouchableOpacity } from "react-native"
+import { Button, StyleSheet, Text, View, TextInput, TouchableOpacity, ScrollView } from "react-native"
 import { NavigationScreenProps, TrouteProps } from "../shared/Routes";
 import { Header } from "../shared/Components/header";
 import { Footer } from "../shared/Components/footer";
@@ -13,14 +13,20 @@ import { ListItem } from "../shared/Components/List";
 
 
 
-// tipagem do TypeScript para resolver os erros de tipagem
 
+interface IListItem {
+    id: string;
+    rate: number;
+    description: string;
+    datetime: string;
+}
 
 export const HomePage = () =>{
 
-const { params } = useRoute<TrouteProps<'home'>>();
+const { params } = useRoute<TrouteProps<'home'>>(); // tipagem do TypeScript para resolver os erros de tipagem
 const navigation = useNavigation<NavigationScreenProps>();
 
+const [list, setList] = useState<IListItem[]>({});
 const [name, setName] = useState('');
 
 
@@ -44,38 +50,14 @@ useEffect ( () => {
             <Text style={style.emptyContentText}> Voce ainda não{'\n'} registrou seu humor </Text>
             </View> 
         */}
-        <View style={style.listContent}>
-            <ListItem 
+        <ScrollView style={style.listContent}>
+            {(<ListItem 
             rate={1}
             description='Testando array'
             datetime=''
             
-            />
-            <ListItem 
-            rate={2}
-            description=''
-            datetime=''
-            
-            />
-            <ListItem 
-            rate={3}
-            description=''
-            datetime=''
-            
-            />
-            <ListItem 
-            rate={4}
-            description=''
-            datetime=''
-            
-            />
-            <ListItem 
-            rate={5}
-            description=''
-            datetime=''
-            
-            />
-        </View>
+            />)}
+        </ScrollView>
         <Footer>
          <View style={style.footerContainer}>
             <Text style={style.footerTitle}>
@@ -113,7 +95,8 @@ useEffect ( () => {
 const style = StyleSheet.create({
 
     footerContainer:{
-        gap: 8
+        gap: 8,
+        
     },
     footerTitle:{
         textAlign: 'center',
@@ -150,6 +133,6 @@ const style = StyleSheet.create({
         flex: 1,
         padding: 8,
         gap: 8,
-    },
+        },
 
 })
