@@ -8,7 +8,7 @@ import { BaseInput } from "../shared/Components/BaseInput";
 import { theme } from "../shared/themes/Theme";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Detail } from "./Detail";
+import { ListItem } from "../shared/Components/List";
 
 
 
@@ -39,11 +39,17 @@ useEffect ( () => {
             {name}
         </Header>
             
-        
+        {/*
         <View style={style.emptyContentContainer}>
             <Text style={style.emptyContentText}> Voce ainda não{'\n'} registrou seu humor </Text>
             </View> 
-    
+        */}
+        <View style={style.listContent}>
+            <ListItem />
+            <ListItem />
+            <ListItem />
+            <ListItem />
+        </View>
         <Footer>
          <View style={style.footerContainer}>
             <Text style={style.footerTitle}>
@@ -113,6 +119,11 @@ const style = StyleSheet.create({
         gap: 12,
         justifyContent: 'center',
         alignItems: 'center'
-    }
+    },
+    listContent:{
+        flex: 1,
+        padding: 8,
+        gap: 8,
+    },
 
 })

@@ -25,7 +25,9 @@ const [showDateTimePicker, setShowDateTimePicker] = useState(false);
 
 
     return <>
+    
          <View style={style.footerContainer}>
+            
             <Text style={style.footerTitle}>
                 como está seu humor hoje:{params.rate}
             </Text>
