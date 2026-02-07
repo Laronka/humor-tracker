@@ -5,9 +5,13 @@ import { theme } from "../themes/Theme";
 
 
 
+interface IListProps{
+    rate: number;
+    description: string;
+    datetime: string;
+}
 
-
-export const ListItem = () => {
+export const ListItem = ({rate, datetime, description}: IListProps) => {
 
     return (
         <View  style={styles.container}>
@@ -17,36 +21,36 @@ export const ListItem = () => {
                </Text>
             </View>   
             <View style={styles.starContainer}>
-                <FontAwesome 
+                {Array.from(new Array(rate)).map((_, index, all) => (
+                    <FontAwesome 
+                        key={index}
                         name={"star"} 
-                        size={24} 
-                        style={{...styles.starFill, ...{color:(theme.colors.Highlight)}}}  //testando concatenação
+                        size={24}
+                        color={theme.colors.Highlight} 
+                        style={{
+                            ...styles.starFill,
+                            ...(index === 0 ? styles.starFillStart :{}), 
+                            ...((index + 1) === all.length ? styles.starFillEnd :{})
+                            }}
                          />
-                <FontAwesome 
-                        name={"star"} 
-                        size={24} 
-                        color={theme.colors.Highlight}
+                         
+                 ))}
+                 {Array.from(new Array(5 -rate)).map((_, index, all) => (
+                    <FontAwesome 
+                        key={index}
+                        name={"star-o"} 
+                        size={24}
+                        color={theme.colors.Highlight} 
+                        style={styles.star}
                          />
-                <FontAwesome 
-                        name={"star"} 
-                        size={24} 
-                        color={theme.colors.Highlight}
-                         />
-                <FontAwesome 
-                        name={"star"} 
-                        size={24} 
-                        color={theme.colors.Highlight}
-                         />
-                <FontAwesome 
-                        name={"star"} 
-                        size={24} 
-                        color={theme.colors.Highlight}
-                         />
+                         
+                 ))}
             </View>
+            
             
             <View>
                 <Text style={styles.descriptionText}>
-                    Texto aqui
+                    {description}
                 </Text>                
             </View>
         </View>
@@ -76,11 +80,24 @@ const styles = StyleSheet.create({
         
 
     },
+    star:{
+        padding: 4
+    },
     starFill:{
         backgroundColor: theme.colors.BackgroundHighlight,
         padding: 4,
-        
-
+    },
+    starFillStart:{
+        backgroundColor: theme.colors.BackgroundHighlight,
+        borderTopLeftRadius: 50,
+        borderBottomLeftRadius: 50,
+        padding: 4,
+    },
+    starFillEnd:{
+        backgroundColor: theme.colors.BackgroundHighlight,
+        borderTopRightRadius: 50,
+        borderBottomRightRadius: 50,
+        padding: 4,
     },
      descriptionText:{
         color: theme.colors.text,

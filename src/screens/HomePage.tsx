@@ -45,10 +45,36 @@ useEffect ( () => {
             </View> 
         */}
         <View style={style.listContent}>
-            <ListItem />
-            <ListItem />
-            <ListItem />
-            <ListItem />
+            <ListItem 
+            rate={1}
+            description='Testando array'
+            datetime=''
+            
+            />
+            <ListItem 
+            rate={2}
+            description=''
+            datetime=''
+            
+            />
+            <ListItem 
+            rate={3}
+            description=''
+            datetime=''
+            
+            />
+            <ListItem 
+            rate={4}
+            description=''
+            datetime=''
+            
+            />
+            <ListItem 
+            rate={5}
+            description=''
+            datetime=''
+            
+            />
         </View>
         <Footer>
          <View style={style.footerContainer}>
